@@ -8,7 +8,7 @@ function Product(name, id, price, units) {
     this.name = name,
     this.id = id,
     this.price = price,
-    this.units = units,
+    this.units = units
     // this.removeUnits = function(val) {
     //     this.units = this.units - val;
     // },
