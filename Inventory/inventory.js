@@ -2,7 +2,7 @@
 inventory of products. Create a product class which has a price, id, 
 and quantity on hand. Then create an inventory class which keeps track
 of various products and can sum up the inventory value. */
-
+var inventory = [];
 
 function Product(name, id, price, units) {
     this.name = name,
@@ -15,6 +15,7 @@ function Product(name, id, price, units) {
     // this.dropPriceByPercentage = function(val) {
     //     this.price = this.price - (this.price * val);
     // }
+    inventory.push(this);
 }
 
 Product.prototype.removeUnits = function(val) {
@@ -25,6 +26,10 @@ Product.prototype.dropPriceByPercentage = function(val) {
     this.price = this.price - (this.price * val);
 }
 
+Product.prototype.addUnits = function(val) {
+    this.units = this.units + val;
+}
+
 let chlebRycerski = new Product("Chleb Rycerski", "Chleb", 3.99, 20);
 let chlebZytni = new Product("Chleb Zytni", "Chleb", 4.99, 7);
 let chlebOrkiszowy = new Product("Chleb Orkiszowy", "Chleb", 3.49, 10);
@@ -33,14 +38,14 @@ let colgate = new Product("Colgate", "Pasta do zebow", 4.99, 20);
 let butyVans = new Product("Nowiutkie Vansy", "Buty", 199.99, 10);
 let butyAdidas = new Product("Nowiutkie Adidasy", "Buty", 299.99, 15);
 
-let inventory = [chlebRycerski,
-     chlebZytni,
-     chlebOrkiszowy,
-     signal,
-     colgate,
-     butyVans,
-     butyAdidas
-];
+// let inventory = [chlebRycerski,
+//      chlebZytni,
+//      chlebOrkiszowy,
+//      signal,
+//      colgate,
+//      butyVans,
+//      butyAdidas
+// ];
 
 function countInventoryValue() {
     var totalValue = 0;
@@ -48,6 +53,14 @@ function countInventoryValue() {
        totalValue = totalValue + (inventory[n].price * inventory[n].units);
     }
     return "$" + totalValue.toFixed(2);
+}
+
+function inventoryCount() {
+    let totalCount = 0;
+    for (let n = 0; n < inventory.length; n++) {
+        totalCount = totalCount + inventory[n].units;
+    }
+    return 'The total count of inventory is ' + totalCount;
 }
 
 console.log(chlebRycerski);
