@@ -9,12 +9,20 @@ function Product(name, id, price, units) {
     this.id = id,
     this.price = price,
     this.units = units,
-    this.removeUnits = function(val) {
-        this.units = this.units - val;
-    },
-    this.dropPriceByPercentage = function(val) {
-        this.price = this.price - (this.price * val);
-    }
+    // this.removeUnits = function(val) {
+    //     this.units = this.units - val;
+    // },
+    // this.dropPriceByPercentage = function(val) {
+    //     this.price = this.price - (this.price * val);
+    // }
+}
+
+Product.prototype.removeUnits = function(val) {
+    this.units = this.units - val;
+}
+
+Product.prototype.dropPriceByPercentage = function(val) {
+    this.price = this.price - (this.price * val);
 }
 
 let chlebRycerski = new Product("Chleb Rycerski", "Chleb", 3.99, 20);
