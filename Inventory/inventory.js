@@ -1,14 +1,15 @@
-/* Product Inventory Project - Create an application which manages an 
-inventory of products. Create a product class which has a price, id, 
+/* Product Inventory Project - Create an application which manages an
+inventory of products. Create a product class which has a price, id,
 and quantity on hand. Then create an inventory class which keeps track
 of various products and can sum up the inventory value. */
 var inventory = [];
 
-function Product(name, id, price, units) {
-    this.name = name,
-    this.id = id,
-    this.price = price,
-    this.units = units
+class Product {
+  constructor(name, id, price, units) {
+    this.name = name;
+    this.id = id;
+    this.price = price;
+    this.units = units;
     // this.removeUnits = function(val) {
     //     this.units = this.units - val;
     // },
@@ -16,18 +17,23 @@ function Product(name, id, price, units) {
     //     this.price = this.price - (this.price * val);
     // }
     inventory.push(this);
-}
+  }
 
-Product.prototype.removeUnits = function(val) {
+  removeUnits(val) {
     this.units = this.units - val;
-}
+  }
 
-Product.prototype.dropPriceByPercentage = function(val) {
+  dropPriceByPercentage(val) {
     this.price = this.price - (this.price * val);
-}
+  }
 
-Product.prototype.addUnits = function(val) {
+  addUnits(val) {
     this.units = this.units + val;
+  }
+  
+  get what() {
+    console.log(this.name + " nalezy do kategorii: " + this.id);
+  }
 }
 
 let chlebRycerski = new Product("Chleb Rycerski", "Chleb", 3.99, 20);
@@ -63,5 +69,5 @@ function inventoryCount() {
     return 'The total count of inventory is ' + totalCount;
 }
 
-console.log(chlebRycerski);
+console.log(inventoryCount());
 console.log(countInventoryValue());
